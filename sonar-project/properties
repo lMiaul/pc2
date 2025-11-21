@@ -1,0 +1,18 @@
+# sonar-project/sonar-project.properties
+
+# 1) Identificación del proyecto en SonarCloud
+sonar.projectKey=lMiaul_pc2       # <-- EXACTO como aparece en SonarCloud
+sonar.organization=lmiaul         # <-- tu organization key en SonarCloud
+sonar.projectName=EduPro MVP (pc2)
+
+# 2) Datos generales
+sonar.host.url=https://sonarcloud.io
+sonar.sourceEncoding=UTF-8
+sonar.python.version=3.11
+
+# 3) Código fuente y tests (rutas relativas a esta carpeta)
+sonar.sources=../api
+sonar.tests=../tests
+
+# 4) Cobertura de tests (coverage.xml que genera GitHub Actions)
+sonar.python.coverage.reportPaths=../coverage.xml
