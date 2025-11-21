@@ -1,5 +1,5 @@
 # sonar-project/sonar-project.properties
-
+# Configuración para SonarCloud
 # 1) Identificación del proyecto en SonarCloud
 sonar.projectKey=lMiaul_pc2       # <-- EXACTO como aparece en SonarCloud
 sonar.organization=lmiaul         # <-- tu organization key en SonarCloud
