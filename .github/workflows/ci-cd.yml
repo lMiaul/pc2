@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: CI - EduPro MVP (Python)
+name: CI - CD - EduPro MVP (Python)
 
 on:
   push:
@@ -29,3 +29,17 @@ jobs:
         run: |
           coverage run -m pytest
           coverage xml
+
+  release:
+    needs: ci-python
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.0
+          name: "EduPro MVP v0.1.0"
+          body: "Primer MVP con endpoints /health, /courses y /students/{id}/progress."
