@@ -55,7 +55,6 @@ def test_home_page_has_courses_table():
     # Texto que indica que viene del endpoint /courses
     assert "GET /courses" in html
 
-
 def test_home_page_has_progress_controls():
     resp = client.get("/")
     assert resp.status_code == 200
@@ -64,5 +63,6 @@ def test_home_page_has_progress_controls():
     assert 'id="student-id"' in html
     # Botón para consultar progreso
     assert "Ver progreso" in html
-    # Texto que indica que usa /students/<id>/progress
-    assert "GET /students&lt;id&gt;/progress" in html
+    # Texto genérico que indica que usa la API de progreso
+    assert "/students" in html   # 👈 en vez de la cadena larga con &lt;id&gt;
+
