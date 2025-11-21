@@ -36,3 +36,33 @@ def test_student_progress_found():
 def test_student_progress_not_found():
     resp = client.get("/students/999/progress")
     assert resp.status_code == 404
+
+def test_home_page_loads():
+    resp = client.get("/")
+    assert resp.status_code == 200
+    html = resp.text
+    assert "EduPro – MVP" in html
+    assert "Catálogo de cursos" in html
+    assert "Progreso por estudiante" in html
+
+def test_home_page_has_courses_table():
+    resp = client.get("/")
+    assert resp.status_code == 200
+    html = resp.text
+    # La tabla de cursos debería existir
+    assert 'id="courses-table"' in html
+    assert 'id="courses-body"' in html
+    # Texto que indica que viene del endpoint /courses
+    assert "GET /courses" in html
+
+
+def test_home_page_has_progress_controls():
+    resp = client.get("/")
+    assert resp.status_code == 200
+    html = resp.text
+    # Campo para ingresar el ID de estudiante
+    assert 'id="student-id"' in html
+    # Botón para consultar progreso
+    assert "Ver progreso" in html
+    # Texto que indica que usa /students/<id>/progress
+    assert "GET /students&lt;id&gt;/progress" in html
